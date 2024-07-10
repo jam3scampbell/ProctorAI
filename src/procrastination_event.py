@@ -51,6 +51,7 @@ class FocusPopup:
             text=ai_message,
             font=("Helvetica", 24),
             bg='white',
+            fg='black',
             wraplength=self.master.winfo_screenwidth() - 100  # Wrap text to fit the screen width with padding
         )
         self.ai_message_label.pack(pady=50, side=tk.TOP)
@@ -60,18 +61,18 @@ class FocusPopup:
         self.bottom_frame = tk.Frame(master, bg='white')
         self.bottom_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=50)
 
-        self.label = tk.Label(self.bottom_frame, text="Please type the following to continue working:", font=("Helvetica", 18), bg='white')
+        self.label = tk.Label(self.bottom_frame, text="Please type the following to continue working:", font=("Helvetica", 18), bg='white', fg='black')
         self.label.pack(pady=10)
 
         self.challenge_text = pledge_message
-        self.challenge_label = tk.Label(self.bottom_frame, text=self.challenge_text, font=("Helvetica", 16), bg='white')
+        self.challenge_label = tk.Label(self.bottom_frame, text=self.challenge_text, font=("Helvetica", 16), bg='white', fg='black')
         self.challenge_label.pack(pady=10)
 
         self.entry = tk.Entry(self.bottom_frame, font=("Helvetica", 16), width=50)
         self.entry.pack(pady=10)
         self.entry.bind('<Return>', self.check_input)
 
-        self.result_label = tk.Label(self.bottom_frame, text="", font=("Helvetica", 16), bg='white')
+        self.result_label = tk.Label(self.bottom_frame, text="", font=("Helvetica", 16), bg='white', fg='black')
         self.result_label.pack(pady=10)
 
     def check_input(self, event):
@@ -83,8 +84,7 @@ class FocusPopup:
             self.entry.delete(0, tk.END)
 
 
-
 if __name__ == "__main__":
     procrastination_event = ProcrastinationEvent()
-    procrastination_event.show_popup("You are procrastinating. Please focus on your work.")
+    procrastination_event.show_popup("You are procrastinating. Please focus on your work.", "I will focus on my work.")
     procrastination_event.play_countdown(10)
