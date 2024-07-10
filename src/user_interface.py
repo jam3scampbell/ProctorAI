@@ -91,7 +91,7 @@ class SettingsDialog(QDialog):
 class ProcrastinationApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.cur_dir = os.path.dirname(__file__) + "/"
+        self.cur_dir = os.path.dirname(__file__)
         self.initUI()
         self.start_time = None
         self.timer = QTimer()
@@ -412,7 +412,7 @@ class ProcrastinationApp(QWidget):
         self.close()
 
     def resizeEvent(self, event):
-        background_image = QPixmap(self.cur_dir+'assets/space_2.jpg')  # Replace with your image file
+        background_image = QPixmap(os.path.dirname(self.cur_dir)+'/assets/space_2.jpg')  # Replace with your image file
         scaled_background = background_image.scaled(self.size(), Qt.IgnoreAspectRatio, Qt.SmoothTransformation)
         
         palette = QPalette()
@@ -542,7 +542,7 @@ def save_settings(settings):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(os.path.dirname(__file__)+'/assets/icon_rounded.png'))
+    app.setWindowIcon(QIcon(os.path.dirname(os.path.dirname(__file__))+'/assets/icon_rounded.png'))
     app.setApplicationName('ProctorAI👁️')
     ex = ProcrastinationApp()
     sys.exit(app.exec_())
