@@ -9,6 +9,7 @@ import anthropic
 import subprocess
 import json
 from abc import ABC, abstractmethod
+from functools import partial
 
 anthropic_api_key = os.environ.get('ANTHROPIC_API_KEY')
 openai_api_key = os.environ.get('OPENAI_API_KEY')
@@ -84,6 +85,25 @@ class Model(ABC):
         # goes from image filepath to base64 encoding needed for APIs
         with open(image_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode("utf-8")
+        
+    def resize_image(self, image_path, max_size_mb=5, quality=85):
+        file_size = os.path.getsize(image_path)
+        max_size_bytes = max_size_mb * 1024 * 1024
+        if file_size <= max_size_bytes:
+            return image_path
+
+        with Image.open(image_path) as img:
+            width, height = img.size
+            # Iteratively resize the image until it's under the size limit
+            while file_size > max_size_bytes:
+                width = int(width * 0.9)
+                height = int(height * 0.9)
+                                
+                img.resize((width, height), Image.LANCZOS).save(image_path, quality=quality, optimize=True)
+                
+                file_size = os.path.getsize(image_path)
+            
+            return image_path
 
 
 def create_model(model_name):
@@ -119,6 +139,8 @@ class GPTModel(Model):
 
     def call_model(self, user_prompt, system_prompt=None, image_paths=None):
         if image_paths is not None:
+            resize_with_max_size = partial(self.resize_image, max_size_mb=20) #GPT has upper limit of 20MB for images
+            image_paths = list(map(resize_with_max_size, image_paths))
             encoded_images = list(map(self.encode_image, image_paths))
             user_prompt = [
                 {"type": "text", "text": user_prompt},
@@ -272,7 +294,8 @@ class ClaudeModel(Model):
 
     def call_model(self, user_prompt, system_prompt=None, image_paths=None):
         if image_paths is not None:
-            image_paths = list(map(self.resize_image, image_paths)) #Claude has upper limit of 5MB for images
+            resize_with_max_size = partial(self.resize_image, max_size_mb=5) #Claude has upper limit of 5MB for images
+            image_paths = list(map(resize_with_max_size, image_paths))
             encoded_images = list(map(self.encode_image, image_paths))
             user_prompt = [
                 {"type": "text", "text": user_prompt},
@@ -289,25 +312,6 @@ class ClaudeModel(Model):
         )
         response_string = response.content[0].text
         return response_string
-    
-    def resize_image(self, image_path, max_size_mb=5, quality=85):
-        file_size = os.path.getsize(image_path)
-        max_size_bytes = max_size_mb * 1024 * 1024
-        if file_size <= max_size_bytes:
-            return image_path
-
-        with Image.open(image_path) as img:
-            width, height = img.size
-            # Iteratively resize the image until it's under the size limit
-            while file_size > max_size_bytes:
-                width = int(width * 0.9)
-                height = int(height * 0.9)
-                                
-                img.resize((width, height), Image.LANCZOS).save(image_path, quality=quality, optimize=True)
-                
-                file_size = os.path.getsize(image_path)
-            
-            return image_path
 
 
 class OLlamaModel(Model):
