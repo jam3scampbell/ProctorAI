@@ -4,10 +4,12 @@ ProctorAI is a multimodal AI that watches your screen and calls you out if it ca
 
 ***An intelligent being that knows what does and doesn't count as procrastination.*** Compared to traditional site blockers, ProctorAI is *intelligent* and capable of understanding nuanced workflows. *This makes a big difference*. Before every Proctor session, the user types out their *session specification*, where they explicitly tell Proctor what they're planning to work on, what behaviors are allowed during the session, and what behaviors are not allowed. Thus, Proctor can handle nuanced rules such as "I'm allowed to go on YouTube, but only to watch Karpathy's lecture on Makemore". No other productivty software can handle this level of flexibility.
 
-<figure style="text-align: center;">
-  <img src="./assets/slap.png" alt="Description of the image" style="width: 300px;">
-  <figcaption style="color: gray; font-size: 12px; text-align: center;">ProctorAI aims to be this woman, but available all the time, snarkier, and with full context of your work.</figcaption>
-</figure>
+<p align="center">
+  <img src="./assets/slap.png" alt="Description of the image" width="300">
+</p>
+<p align="center" style="color: gray; font-size: 11px;">
+  ProctorAI aims to be this woman, but available all the time, snarkier, and with full context of your work.
+</p>
 
 ***It's alive!*** A big design goal with Proctor is that it should to *feel alive*. In my experience using Proctor, I tend to not break my rules because I can intuitively *feel* the AI watching me, just like how test-takers are much less likely to cheat when they can *feel* the proctor of an exam watching them.
 
