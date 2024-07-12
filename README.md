@@ -59,3 +59,4 @@ This project is still very much under active development. Some features I'm hopi
 - scheduling sessions, having it start running when you open your computer, give model awareness of timer
 - make it extremely annoying to quit the program (at least until the user finishes their pre-defined session)
 - having a drafts folder for prompts so you don't have to re-type it out if you're doing the same task as you were the other day
+- mute all other sounds on computer when the TTS plays (so it isn't drowned out by music)

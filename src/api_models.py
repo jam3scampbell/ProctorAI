@@ -345,4 +345,5 @@ class OLlamaModel(Model):
             return None  # Return None or handle the error as needed
 
         response_string = data["message"]["content"]
+        assert response_string is not None, "Make sure OLlama is turned on!"
         return response_string
