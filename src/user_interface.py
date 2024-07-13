@@ -448,7 +448,7 @@ class ProcrastinationApp(QWidget):
         if user_message:
             self.chat_area.append(f"You: {user_message}")
             self.input_area.clear()
-            model = create_model("claude-3-5-sonnet-20240620")
+            model = create_model(self.settings["model"])
             system_prompt = "You are a charismatic productivity assistant chatbot. You give short encouraging responses."
             user_prompt = f"The User just updated their task specification. It is pasted below. Please give a brief response telling them that their task has been updated and a little bit of personalized ecouragement. But no matter what, don't sound cliche.\n\n{user_message}"            
             ai_message = model.call_model(user_prompt, system_prompt=system_prompt)
