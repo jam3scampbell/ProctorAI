@@ -45,6 +45,7 @@ The following can all be toggled in the settings page or used as arguments to `m
 | `voice`          | Select the voice of Eleven Labs speaker                                                               |
 | `cli_mode`       | Run without GUI                                                                                        |
 | `delay_time`     | The amount of time between each screenshot                                                                   |
+| `initial_delay`  | The amount of time to wait before Proctor starts watching your screen (useful for giving you time to open what you want to work on)                                                            |
 | `countdown_time` | The amount of time Proctor gives to close the source of procrastination                                                            |
 | `user_name`      | Enter your name to make the experience more personalized                                                       |
 | `print_CoT`      | Print the model's chain-of-thought to the console                                                       |

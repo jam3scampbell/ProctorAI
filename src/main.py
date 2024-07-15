@@ -1,7 +1,6 @@
 
 import time
 import os
-import time
 from tqdm import tqdm
 import yaml
 import threading 
@@ -94,7 +93,7 @@ def control_sequence(call_when_procrastinate: callable, call_when_procrast_args,
 
 
 
-def main(model_name="claude-3-5-sonnet-20240620", tts=False, cli_mode=False, voice="Patrick", delay_time=0, countdown_time=15, user_name="Procrastinator", print_CoT=False, two_tier=False, router_model_name="llava"):
+def main(model_name="claude-3-5-sonnet-20240620", tts=False, cli_mode=False, voice="Patrick", delay_time=0, initial_delay=0, countdown_time=15, user_name="Procrastinator", print_CoT=False, two_tier=False, router_model_name="llava"):
 
     os.makedirs(os.path.dirname(os.path.dirname(__file__))+"/screenshots", exist_ok=True)
 
@@ -109,6 +108,9 @@ def main(model_name="claude-3-5-sonnet-20240620", tts=False, cli_mode=False, voi
         router_model = create_model(router_model_name)
 
     total_cost = 0
+
+    time.sleep(initial_delay)
+
     while True:
         procrast_seq_args = [user_spec, user_name, proctor_model, tts, voice, countdown_time]
         control_args = [procrastination_sequence, procrast_seq_args, proctor_model, proctor_model, total_cost, user_spec, print_CoT, "user_prompt"]
@@ -127,6 +129,7 @@ if __name__ == "__main__":
     parser.add_argument("--voice", help="Set voice", default="Patrick", type=str)
     parser.add_argument("--cli_mode", help="Enable CLI mode", action="store_true")
     parser.add_argument("--delay_time", help="Set delay time", default=0, type=int)
+    parser.add_argument("--initial_delay", help="Initial delay so user can open relevant apps", default=0, type=int)
     parser.add_argument("--countdown_time", help="Set countdown time", default=15, type=int)
     parser.add_argument("--user_name", help="Set user name", default="Procrastinator", type=str)
     parser.add_argument("--print_CoT", help="Show model's chain of thought", action="store_true")
@@ -134,4 +137,4 @@ if __name__ == "__main__":
     parser.add_argument("--router_model", help="Set router model", default="llava", type=str)
 
     args = parser.parse_args()
-    main(model_name=args.model_name, tts=args.tts, cli_mode=args.cli_mode, voice=args.voice, delay_time=args.delay_time, countdown_time=args.countdown_time, user_name=args.user_name, print_CoT=args.print_CoT, two_tier=args.two_tier, router_model_name=args.router_model)
+    main(model_name=args.model_name, tts=args.tts, cli_mode=args.cli_mode, voice=args.voice, delay_time=args.delay_time, initial_delay=args.initial_delay, countdown_time=args.countdown_time, user_name=args.user_name, print_CoT=args.print_CoT, two_tier=args.two_tier, router_model_name=args.router_model)

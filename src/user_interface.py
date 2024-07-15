@@ -39,6 +39,11 @@ class SettingsDialog(QDialog):
         self.delay_time_spinbox.setRange(0, 100)
         self.layout.addRow("Delay Time", self.delay_time_spinbox)
 
+        # initial_delay flag
+        self.initial_delay_spinbox = QSpinBox()
+        self.initial_delay_spinbox.setRange(0,100)
+        self.layout.addRow("Initial Delay", self.initial_delay_spinbox)
+
         # countdown_time flag
         self.countdown_time_spinbox = QSpinBox()
         self.countdown_time_spinbox.setRange(0, 100)
@@ -80,6 +85,7 @@ class SettingsDialog(QDialog):
             "voice": self.voice_combobox.currentText(),
             "cli_mode": self.cli_mode_checkbox.isChecked(),
             "delay_time": self.delay_time_spinbox.value(),
+            "initial_delay": self.initial_delay_spinbox.value(),
             "countdown_time": self.countdown_time_spinbox.value(),
             "user_name": self.user_name_lineedit.text(),
             "print_CoT": self.print_CoT_checkbox.isChecked(),
@@ -345,6 +351,7 @@ class ProcrastinationApp(QWidget):
                 "--model", self.settings["model"],
                 "--voice", self.settings["voice"],
                 "--delay_time", str(self.settings["delay_time"]),
+                "--initial_delay", str(self.settings["initial_delay"]),
                 "--countdown_time", str(self.settings["countdown_time"]),
                 "--user_name", self.settings["user_name"],
                 "--router_model", self.settings["router_model"]
@@ -462,6 +469,7 @@ class ProcrastinationApp(QWidget):
         self.settings_dialog.voice_combobox.setCurrentText(self.settings["voice"])
         self.settings_dialog.cli_mode_checkbox.setChecked(self.settings["cli_mode"])
         self.settings_dialog.delay_time_spinbox.setValue(self.settings["delay_time"])
+        self.settings_dialog.initial_delay_spinbox.setValue(self.settings["initial_delay"])
         self.settings_dialog.countdown_time_spinbox.setValue(self.settings["countdown_time"])
         self.settings_dialog.user_name_lineedit.setText(self.settings["user_name"])
         self.settings_dialog.print_CoT_checkbox.setChecked(self.settings["print_CoT"])
@@ -526,6 +534,7 @@ def load_settings():
             "voice": "Patrick",
             "cli_mode": False,
             "delay_time": 0,
+            "initial_delay": 0,
             "countdown_time": 15,
             "user_name": "Procrastinator",
             "print_CoT": False,
