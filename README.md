@@ -1,6 +1,6 @@
 # ProctorAI👁️
 ## 🔍 Overview
-ProctorAI is a multimodal AI that watches your screen and calls you out if it catches you procrastinating. Proctor works by taking screenshots of your computer every few seconds (at a specified interval) and feeding them into a multimodal model, such as Claude-3.5-Sonnet, GPT-4o, or LLaVA-1.5. If ProctorAI determines that you are procrastinating, it will take control of your screen and yell at you with a personalized message. After making you pledge to stop procrastinating, ProctorAI will then give you 15 seconds to close the source of procrastination or will continue to bug you.
+ProctorAI is a multimodal AI that watches your screen and calls you out if it sees you procrastinating. Proctor works by taking screenshots of your computer every few seconds (at a specified interval) and feeding them into a multimodal model, such as Claude-3.5-Sonnet, GPT-4o, or LLaVA-1.5. If ProctorAI determines that you are not focused, it will take control of your screen and yell at you with a personalized message. After making you pledge to stop procrastinating, ProctorAI will then give you 15 seconds to close the source of procrastination or will continue to bug you.
 
 <p align="center">
   <img src="./assets/demo.gif" alt="Project demo" width="400">

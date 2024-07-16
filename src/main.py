@@ -115,7 +115,7 @@ def main(model_name="claude-3-5-sonnet-20240620", tts=False, cli_mode=False, voi
         procrast_seq_args = [user_spec, user_name, proctor_model, tts, voice, countdown_time]
         control_args = [procrastination_sequence, procrast_seq_args, proctor_model, proctor_model, total_cost, user_spec, print_CoT, "user_prompt"]
         if two_tier:
-            #essentially, this code re-runs control sequence with the router_model and then re-runs it again with proctor_model if the router_model determines the user is procrastinating
+            #essentially, this code runs control sequence with the router_model and then re-runs it again with proctor_model if the router_model determines the user is procrastinating
             control_sequence(control_sequence, control_args, router_model, proctor_model, total_cost, user_spec, print_CoT, "user_prompt_strict")
         elif not two_tier:
             control_sequence(*control_args)
