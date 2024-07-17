@@ -15,13 +15,13 @@ ProctorAI is a multimodal AI that watches your screen and calls you out if it se
   ProctorAI aims to be this woman, but available all the time, snarkier, and with full context of your work.
 </p>
 
-***It's alive!*** A big design goal with Proctor is that it should to *feel alive*. In my experience, I tend not to break the rules because I can intuitively *feel* the AI watching me--just like how test-takers are much less likely to cheat when they can *feel* the proctor of an exam watching them.
+***It's alive!*** A big design goal with Proctor is that it should *feel alive*. In my experience, I tend not to break the rules because I can intuitively *feel* the AI watching me--just like how test-takers are much less likely to cheat when they can *feel* the proctor of an exam watching them.
 
 ## 🚀 Setup and Installation
 To start the GUI, just type ./run.sh. You might get some popups asking to allow terminal access to certain utilities, which you should enable.  
 ```
 git clone https://github.com/jam3scampbell/ProctorAI
-python venv -m focusenv
+python -m venv focusenv
 source focusenv/bin/activate
 pip install -r requirements.txt
 ./run.sh

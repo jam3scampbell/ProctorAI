@@ -36,12 +36,12 @@ class SettingsDialog(QDialog):
 
         # delay_time flag
         self.delay_time_spinbox = QSpinBox()
-        self.delay_time_spinbox.setRange(0, 100)
+        self.delay_time_spinbox.setRange(0, 100000)
         self.layout.addRow("Delay Time", self.delay_time_spinbox)
 
         # initial_delay flag
         self.initial_delay_spinbox = QSpinBox()
-        self.initial_delay_spinbox.setRange(0,100)
+        self.initial_delay_spinbox.setRange(0,100000)
         self.layout.addRow("Initial Delay", self.initial_delay_spinbox)
 
         # countdown_time flag
