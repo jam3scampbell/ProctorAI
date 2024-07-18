@@ -109,6 +109,8 @@ class Model(ABC):
 def create_model(model_name):
     if model_name == "gpt-4o":
         return GPTModel(model_name)
+    elif model_name == "gpt-4o-mini":
+        return GPTModel(model_name)
     elif model_name == "gemini-1.5-flash":
         return GeminiModel(model_name)
     elif model_name == "claude-3-5-sonnet-20240620":
@@ -123,6 +125,7 @@ def create_model(model_name):
 
 api_name_to_colloquial = {
     "gpt-4o": "GPT-4o",
+    "gpt-4o-mini": "GPT-4o Mini",
     "gemini-1.5-flash": "Gemini 1.5 Flash",
     "gemini-1.5-pro": "Gemini 1.5 Pro",
     "claude-3-5-sonnet-20240620": "Claude 3.5 Sonnet",
@@ -189,6 +192,9 @@ class GPTModel(Model):
         if self.model_name == "gpt-4o":
             price_per_million_input_tokens = 5.00
             price_per_million_output_tokens = 15.00
+        elif self.model_name == "gpt-4o-mini":
+            price_per_million_input_tokens = 0.15
+            price_per_million_output_tokens = 0.60
         else:
             raise NotImplementedError("Pricing not defined for this model.")
 
