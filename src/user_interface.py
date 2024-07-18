@@ -18,7 +18,7 @@ class SettingsDialog(QDialog):
 
         # model_name flag
         self.model_name_box = QComboBox()
-        self.model_name_box.addItems(["claude-3-5-sonnet-20240620","gpt-4o","gemini-1.5-flash","llava:34b","llava"])
+        self.model_name_box.addItems(["claude-3-5-sonnet-20240620","gpt-4o","gemini-1.5-flash","llava:34b","llava", "gpt-4o-mini"])
         self.layout.addRow("Model", self.model_name_box)
 
         # tts flag
@@ -64,7 +64,7 @@ class SettingsDialog(QDialog):
         
         # router model
         self.router_model_box = QComboBox()
-        self.router_model_box.addItems(["claude-3-5-sonnet-20240620","gpt-4o","gemini-1.5-flash","llava:34b","llava"])
+        self.router_model_box.addItems(["claude-3-5-sonnet-20240620","gpt-4o","gemini-1.5-flash","llava:34b","llava", "gpt-4o-mini"])
         self.layout.addRow("Router Model", self.router_model_box)
 
         # OK and Cancel buttons
