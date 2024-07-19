@@ -4,5 +4,7 @@ OPENAI_API_KEY="..."
 # if you want use global python just type python
 # Or if you will have problems with libraries write full path to python.exe in venv
 PATH_TO_LOCAL_EVN=""
-SCREENSHOTS_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\screenshots\"
-VOICE_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\voices"
+
+You can specify it if you want
+# SCREENSHOTS_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\screenshots\"
+# VOICE_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\voices"
