@@ -21,6 +21,7 @@ ProctorAI is a multimodal AI that watches your screen and calls you out if it se
 To start the GUI, just type ./run.sh. You might get some popups asking to allow terminal access to certain utilities, which you should enable.  
 ```
 git clone https://github.com/jam3scampbell/ProctorAI
+cd ProctorAI
 python -m venv focusenv
 source focusenv/bin/activate
 pip install -r requirements.txt
