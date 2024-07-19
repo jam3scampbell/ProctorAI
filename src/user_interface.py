@@ -7,7 +7,16 @@ from PyQt5.QtGui import QColor, QTextCursor, QTextCharFormat, QKeySequence
 from api_models import *
 import json
 import os
+from utils import find_virtualenv
+from dotenv import find_dotenv, load_dotenv
 
+dotenv_file = find_dotenv()
+load_dotenv(dotenv_file)
+
+VENV_PATH = os.getenv("PATH_TO_LOCAL_EVN", None)
+
+if not VENV_PATH:
+    VENV_PATH = os.path.join(find_virtualenv(".."), "Scripts", "python.exe")
 
 class SettingsDialog(QDialog):
     def __init__(self, parent=None):
@@ -157,9 +166,6 @@ class ProcrastinationApp(QWidget):
 
         self.typing_timer = QTimer(self)
         self.typing_timer.timeout.connect(self.update_text)
-
-
-
 
 
         self.prompt_input = QTextEdit(self)
@@ -357,7 +363,8 @@ class ProcrastinationApp(QWidget):
                 "--router_model", self.settings["router_model"]
             ])
 
-            self.process.setProgram("python3")
+            # HERE PATH TO YOUR VENV PYTHON
+            self.process.setProgram(VENV_PATH)
             self.process.setArguments(arguments)
             self.process.setProcessChannelMode(QProcess.MergedChannels)
             self.process.readyReadStandardOutput.connect(self.handle_stdout)
