@@ -17,24 +17,28 @@ ProctorAI is a multimodal AI that watches your screen and calls you out if it se
 
 ***It's alive!*** A big design goal with Proctor is that it should *feel alive*. In my experience, I tend not to break the rules because I can intuitively *feel* the AI watching me--just like how test-takers are much less likely to cheat when they can *feel* the proctor of an exam watching them.
 
-## 🚀 Setup and Installation
-To start the GUI, just type ./run.sh. You might get some popups asking to allow terminal access to certain utilities, which you should enable.  
+## 🚀 Setup and Installation (Windows)
+
 ```
 git clone https://github.com/jam3scampbell/ProctorAI
 python -m venv focusenv
-source focusenv/bin/activate
+focusenv\Scripts\activate.bat
+cd ProctorAI
 pip install -r requirements.txt
-./run.sh
 ```
+
+**Then** set the environment variables in **.env** file.
+* For voice set `ELEVEN_LABS_API_KEY` - could be found [here](https://elevenlabs.io/)
 
 Depending on which models you want to use under-the-hood, you should define the following API keys as environment variables:
 - `OPENAI_API_KEY`
 - `ANTHROPIC_API_KEY`
 - `GEMINI_API_KEY`
-- `ELEVEN_LABS_API_KEY`
+> Additionally, you can specify the directories where screenshots and voices will be stored, such as `SCREENSHOTS_FOLDER` and `VOICE_FOLDER`. However, this is optional.
 
 To keep the running API price low, I recommend using `two_tier` mode, with a local model such as LLaVA as the router model. For this, you will need [Ollama](https://ollama.com) and to install the [llava](https://ollama.com/library/llava) model. Make sure Ollama is running in the background before starting ProctorAI.
 
+To start the GUI, just type `python src\user_interface.py`. You might get some popups asking to allow terminal access to certain utilities, which you should enable.  
 
 ## ⚙️ Options/Settings 
 The following can all be toggled in the settings page or used as arguments to `main.py`:
