@@ -1,0 +1,1 @@
+{"model": "gpt-4o", "tts": true, "voice": "Patrick", "cli_mode": false, "delay_time": 0, "initial_delay": 0, "countdown_time": 15, "user_name": "Procrastinator", "print_CoT": false, "two_tier": false, "router_model": "gpt-4o"}
