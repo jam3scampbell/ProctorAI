@@ -1,0 +1,4 @@
+ELEVEN_LABS_API_KEY="..."
+OPENAI_API_KEY="..."
+SCREENSHOTS_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\screenshots\"
+VOICE_FOLDER="C:\Users\user\Desktop\proctor\ProctorAI\voices"
