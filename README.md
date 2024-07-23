@@ -18,7 +18,7 @@ ProctorAI is a multimodal AI that watches your screen and calls you out if it se
 ***It's alive!*** A big design goal with Proctor is that it should *feel alive*. In my experience, I tend not to break the rules because I can intuitively *feel* the AI watching me--just like how test-takers are much less likely to cheat when they can *feel* the proctor of an exam watching them.
 
 ## 🚀 Setup and Installation
-To start the GUI, just type ./run.sh. You might get some popups asking to allow terminal access to certain utilities, which you should enable.  
+To start the GUI, just type ./run.sh. You might get some popups asking to allow terminal access to certain utilities, which you should enable. The current implementation requires MacOS (and you can find a Windows-compatible version in the `windows` branch). We hope to make Proctor platform-independent soon. 
 ```
 git clone https://github.com/jam3scampbell/ProctorAI
 cd ProctorAI
