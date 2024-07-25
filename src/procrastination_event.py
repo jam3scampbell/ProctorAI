@@ -64,7 +64,7 @@ class FocusPopup:
         self.label = tk.Label(self.bottom_frame, text="Please type the following to continue working:", font=("Helvetica", 18), bg='white', fg='black')
         self.label.pack(pady=10)
 
-        self.challenge_text = pledge_message
+        self.challenge_text = pledge_message.strip()
         self.challenge_label = tk.Label(self.bottom_frame, text=self.challenge_text, font=("Helvetica", 16), bg='white', fg='black')
         self.challenge_label.pack(pady=10)
 
