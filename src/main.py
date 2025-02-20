@@ -78,18 +78,21 @@ def procrastination_sequence(user_spec, user_name, proctor_model, tts, voice, co
 
 
 def control_sequence(call_when_procrastinate: callable, call_when_procrast_args, model, judge_model, total_cost, user_spec, print_CoT, user_prompt_label):
-    image_filepaths = take_screenshots()
-    determination, total_cost = model_pipeline(model, judge_model, config[user_prompt_label].format(user_spec=user_spec), total_cost, image_filepaths, print_CoT=print_CoT)
+    screenshots = take_screenshots()  # Now returns a list of dicts
+    filepaths = [shot["filepath"] for shot in screenshots]  # Extract file paths for the current pipeline
+    determination, total_cost = model_pipeline(model, judge_model, config[user_prompt_label].format(user_spec=user_spec), total_cost, filepaths, print_CoT=print_CoT)
     print(f"{api_name_to_colloquial[model.model_name]} Determination: ", determination)
         
     if 'productive' in determination.lower():
         pass
     elif 'procrastinating' in determination.lower():
+        # Pass the full screenshots list to the procrastination sequence
         if call_when_procrastinate.__name__ == "procrastination_sequence":
-            call_when_procrast_args.append(image_filepaths)
+            call_when_procrast_args.append(filepaths)
         call_when_procrastinate(*call_when_procrast_args)
     else:
         print(f"{api_name_to_colloquial[model.model_name]} Determination: ERROR, LLM Output: ", determination)
+
 
 
 

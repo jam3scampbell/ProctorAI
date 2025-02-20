@@ -14,3 +14,5 @@ user_prompt_pledge: "{user_name} has been caught procrastinating. Attached is hi
 
 system_prompt_countdown: "You are an LLM embedded in a larger automated productivity system. You only respond with one word."
 user_prompt_countdown: "The user wrote his goal for the session as follows:\n\n{user_spec}\n\nHis screen is attached. In one word, what is the user's source of procrastination? Possible answers include: 'twitter', 'youtube', etc. PLEASE ONLY ANSWER IN ONE WORD. If you are uncertain, please just respond with the phrase 'the source of procrastination'."
+
+analytics_prompt: "Analyze the screenshot and briefly describe what activity is being performed on the screen."
