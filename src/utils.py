@@ -7,6 +7,7 @@ import sounddevice as sd
 import soundfile as sf
 import requests
 from pydub import AudioSegment
+from datetime import datetime
 
 openai_api_key = os.environ.get('OPENAI_API_KEY')
 xi_api_key = os.environ.get('ELEVEN_LABS_API_KEY')
@@ -32,17 +33,26 @@ def get_number_of_screens():
     return len(NSScreen.screens())
 
 def take_screenshots():
-    # returns a list of the filepaths of the monitor screenshots
+    """
+    Takes screenshots of each monitor and returns a list of dictionaries.
+    Each dict contains the filepath and a timestamp.
+    """
     num_screens = get_number_of_screens()
     if num_screens == 0:
         print("Error: No screens detected.")
-        return None
-    image_filepaths = []
+        return []
+    
+    screenshots = []
     for screen in range(1, num_screens+1):
-        save_filepath = os.path.dirname(os.path.dirname(__file__))+f"/screenshots/screen_{screen}.png"
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        save_filepath = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            "screenshots",
+            f"screen_{screen}_{timestamp}.png"
+        )
         subprocess.run(["screencapture", "-x", f"-D{screen}", save_filepath])
-        image_filepaths.append(save_filepath)
-    return image_filepaths
+        screenshots.append({"filepath": save_filepath, "timestamp": timestamp})
+    return screenshots
 
 def text_to_speech_deprecated(text):
     client = OpenAI(api_key=openai_api_key)
