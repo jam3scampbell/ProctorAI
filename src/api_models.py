@@ -128,7 +128,7 @@ api_name_to_colloquial = {
     "gpt-4o-mini": "GPT-4o Mini",
     "gemini-1.5-flash": "Gemini 1.5 Flash",
     "gemini-1.5-pro": "Gemini 1.5 Pro",
-    "claude-3-5-sonnet-20240620": "Claude 3.5 Sonnet",
+    "claude-3-5-sonnet-20241022": "Claude 3.5 Sonnet",
     "llava:34b": "LLAVA 34B",
     "llava": "LLAVA"
 }
